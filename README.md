@@ -1,58 +1,42 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Elite Vision — L-Band SAR & NASA POWER Environmental Intelligence Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Elite Vision** is a real-time satellite telemetry and environmental monitoring platform built for the **NASA Space Apps Challenge**. It combines **NISAR L-Band Synthetic Aperture Radar (SAR)** mission parameters with live **NASA POWER API** meteorological and soil telemetry (`T2M`, `PRECTOTCORR`, `GWETTOP`, `RH2M`) to detect flood inundation, vegetation cover changes, and soil saturation across global regions.
 
-## About Laravel
+## Platform Preview
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Executive Telemetry Dashboard
+![Elite Vision Dashboard](docs/dashboard.png)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Interactive Global SAR Map & Scan Point Telemetry
+![Interactive Map](docs/interactive-map.png)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### SAR Data Layers & NISAR Orbital Feed
+| Data Layers (`Flood`, `Vegetation`, `Soil`) | NISAR Satellite Feed & Downlink |
+| :---: | :---: |
+| ![Data Layers](docs/data-layers.png) | ![NISAR Feed](docs/nisar-feed.png) |
 
-## Learning Laravel
+### Historical Analytics & Multi-Region Trends
+![Analytics](docs/analytics.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Key Capabilities
+- **Executive Telemetry Dashboard:** Real-time KPIs (`Active Satellites`, `Global Alerts`, `Data Processed`, `System Uptime`), 3D Mapbox globe markers, live threat feed, and 30-day telemetry trend charts.
+- **Interactive Global SAR Map:** Full-screen Mapbox GL visualization with scan-layer filtering and a live **Scan Point Details** inspection drawer.
+- **Dedicated SAR Data Layers:** Specialized views for **Flood Mapping** (`HH / HV`), **Vegetation Change** (`VV / VH`), and **Soil Moisture** (`HH`) with regional breakdowns and historical curves.
+- **NISAR Satellite Feed:** Live orbital pass schedules, ground station downlink health, and physics-informed radar payload parameters (polarization, resolution, incidence angle, swath width).
+- **Analytics & Historical Analysis:** Multi-metric daily time-series analysis, alert volume rankings, and per-region acquisition volumes.
+- **Live NASA POWER Ingestion (`Add Scan Region`):** Enter any latitude/longitude to fetch 30 days of real NASA POWER environmental data, auto-classify the dominant environmental layer, and persist telemetry across the entire platform.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Tech Stack
+- **Backend:** Laravel 13, PHP 8.3, Livewire 4, SQLite / MySQL
+- **Frontend:** Tailwind CSS, Alpine.js, Mapbox GL JS, Chart.js, Vite
+- **NASA Data Sources:** NASA POWER Daily API (`T2M`, `PRECTOTCORR`, `GWETTOP`, `RH2M`) & NISAR L-Band SAR Mission Specifications
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
-
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
+## Local Installation
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+git clone https://github.com/irfan-ullahh/nasa-app-challange.git
+cd nasa-app-challange
+composer install && npm install
+cp .env.example .env && php artisan key:generate
+# Add your MAPBOX_TOKEN in .env
+php artisan migrate --seed
+npm run build && php artisan serve
