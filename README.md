@@ -2,6 +2,14 @@
 
 **Elite Vision** is a real-time satellite telemetry and environmental monitoring platform built for the **NASA Space Apps Challenge**. It combines **NISAR L-Band Synthetic Aperture Radar (SAR)** mission parameters with live **NASA POWER API** meteorological and soil telemetry (`T2M`, `PRECTOTCORR`, `GWETTOP`, `RH2M`) to detect flood inundation, vegetation cover changes, and soil saturation across global regions.
 
+# Elite Vision — L-Band SAR & NASA POWER Environmental Intelligence Platform
+
+**Elite Vision** is a real-time satellite telemetry and environmental monitoring platform built for the **NASA Space Apps Challenge**. It combines **NISAR L-Band Synthetic Aperture Radar (SAR)** mission parameters with live **NASA POWER API** meteorological and soil telemetry (`T2M`, `PRECTOTCORR`, `GWETTOP`, `RH2M`) to detect flood inundation, vegetation cover changes, and soil saturation across global regions.
+
+**Live Video Demo:** [Watch on YouTube (5-Minute Walkthrough)](https://youtu.be/5Fbz8SBzqU4)
+
+## Platform Preview
+
 ## Platform Preview
 
 ### Executive Telemetry Dashboard
